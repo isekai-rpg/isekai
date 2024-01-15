@@ -40,3 +40,6 @@ bin/
 
 ### Custom ###
 server/
+
+.env*
+!.env.example
