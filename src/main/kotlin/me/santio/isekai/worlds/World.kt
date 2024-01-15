@@ -10,27 +10,22 @@ import net.minestom.server.world.DimensionType
 abstract class World(
     private val file: String? = null,
 ) {
-    private var instance: Instance? = null
+    val instance by lazy { get() }
     protected open val dimension: DimensionType = DimensionType.OVERWORLD
 
-    fun get(): Instance {
-        if (instance != null) return instance!!
+    private fun get(): Instance {
         val manager = MinecraftServer.getInstanceManager()
 
-        instance = if (file != null) {
+        val instance = if (file != null) {
             manager.createInstanceContainer(dimension, AnvilLoader(file))
         } else manager.createInstanceContainer(dimension)
 
-        generate(instance!!)
-        return instance!!
+        generate(instance)
+        return instance
     }
 
     fun save() {
-        instance?.saveChunksToStorage()
-    }
-
-    fun isLoaded(): Boolean {
-        return instance != null
+        instance.saveChunksToStorage()
     }
 
     protected abstract fun generate(instance: Instance)
