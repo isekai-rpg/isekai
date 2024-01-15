@@ -1,10 +1,10 @@
 package me.santio.isekai.worlds
 
+import net.minestom.server.MinecraftServer
 import net.minestom.server.coordinate.Pos
 import net.minestom.server.entity.Player
 import net.minestom.server.instance.AnvilLoader
 import net.minestom.server.instance.Instance
-import net.minestom.server.instance.InstanceManager
 import net.minestom.server.world.DimensionType
 
 abstract class World(
@@ -13,8 +13,9 @@ abstract class World(
     private var instance: Instance? = null
     protected open val dimension: DimensionType = DimensionType.OVERWORLD
 
-    fun get(manager: InstanceManager): Instance {
+    fun get(): Instance {
         if (instance != null) return instance!!
+        val manager = MinecraftServer.getInstanceManager()
 
         instance = if (file != null) {
             manager.createInstanceContainer(dimension, AnvilLoader(file))
