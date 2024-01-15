@@ -9,6 +9,10 @@ object BlockRegistry {
         return this.name().contains(kind.search, true)
     }
 
+    fun Block.asHalf(half: Half): Block {
+        return this.withProperty("half", half.value)
+    }
+
     fun Block.isHalf(half: Half): Boolean {
         return this.getProperty("half") == half.value
     }

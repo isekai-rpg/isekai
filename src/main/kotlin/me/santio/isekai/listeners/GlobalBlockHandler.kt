@@ -1,7 +1,5 @@
 package me.santio.isekai.listeners
 
-import me.santio.isekai.helper.BlockRegistry
-import me.santio.isekai.helper.BlockRegistry.isKind
 import net.minestom.server.event.player.PlayerBlockPlaceEvent
 import net.minestom.server.instance.block.Block
 import net.minestom.server.instance.block.BlockHandler
@@ -25,10 +23,6 @@ object GlobalBlockHandler {
             ?: predicateHandlers.entries.firstOrNull { it.key.test(block) }?.value
             ?: return
 
-
-        if (block.isKind(BlockRegistry.BlockKind.DOOR)) {
-            isCancelled = true
-            instance.setBlock(blockPosition, block.withHandler(handler))
-        }
+        block = block.withHandler(handler)
     }
 }

@@ -7,7 +7,12 @@ import ru.gildor.coroutines.okhttp.await
 
 class UnifiedMojangAPI {
 
-    suspend fun get(query: String): UnifiedMojangAPIResponse {
+    /**
+     * Get a [UnifiedMojangAPIResponse] from a username
+     * @param query username to query
+     * @return [Result] of [UnifiedMojangAPIResponse]
+     */
+    suspend fun get(query: String): Result<UnifiedMojangAPIResponse> {
         val request = Request.Builder()
             .url(BASE_URL + query)
             .build()
@@ -18,6 +23,7 @@ class UnifiedMojangAPI {
 
     companion object {
         const val BASE_URL: String = "https://api.ashcon.app/mojang/v2/user/"
+
         private val client = OkHttpClient().newBuilder().build()
     }
 }
