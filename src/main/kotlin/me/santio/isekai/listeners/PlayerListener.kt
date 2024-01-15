@@ -15,7 +15,6 @@ import net.minestom.server.event.player.PlayerSkinInitEvent
 class PlayerListener(
     private val server: MinecraftServer
 ) {
-
     private val mojangAPI = UnifiedMojangAPI()
 
     suspend fun PlayerSkinInitEvent.on() {
