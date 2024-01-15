@@ -4,6 +4,7 @@ import net.minestom.server.coordinate.Pos
 import net.minestom.server.coordinate.Vec
 import net.minestom.server.instance.block.BlockFace
 import net.minestom.server.instance.block.BlockHandler
+import kotlin.math.abs
 
 fun pos(x: Number, y: Number, z: Number): Pos {
     return Pos(
@@ -16,7 +17,7 @@ fun pos(x: Number, y: Number, z: Number): Pos {
 fun Vec.toBlockFace(): BlockFace {
     val normalized = this.normalize()
 
-    return if (kotlin.math.abs(normalized.x()) > kotlin.math.abs(normalized.z())) {
+    return if (abs(normalized.x()) > abs(normalized.z())) {
         if (normalized.x() > 0) BlockFace.EAST else BlockFace.WEST
     } else {
         if (normalized.z() > 0) BlockFace.SOUTH else BlockFace.NORTH
