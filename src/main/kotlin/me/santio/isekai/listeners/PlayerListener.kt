@@ -29,7 +29,7 @@ class PlayerListener(
     }
 
     fun PlayerLoginEvent.on() {
-        setSpawningInstance(FlatWorld.get(MinecraftServer.getInstanceManager()))
+        setSpawningInstance(FlatWorld.instance)
         player.respawnPoint = FlatWorld.spawn(player)
         player.setGameMode(GameMode.CREATIVE)
     }

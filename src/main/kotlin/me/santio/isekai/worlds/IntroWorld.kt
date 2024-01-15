@@ -10,7 +10,9 @@ import net.minestom.server.instance.Instance
 import net.minestom.server.instance.block.Block
 import net.minestom.server.world.DimensionType
 
-object FlatWorld: World() {
+object IntroWorld: World(
+    file = "worlds/intro"
+) {
     override val dimension = DimensionType.builder(id("flat_world"))
         .ambientLight(2f)
         .build()
