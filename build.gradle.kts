@@ -28,6 +28,9 @@ dependencies {
     // mccoroutine
     implementation("com.github.shynixn.mccoroutine:mccoroutine-minestom-api:2.14.0")
     implementation("com.github.shynixn.mccoroutine:mccoroutine-minestom-core:2.14.0")
+
+    // adventure api
+    implementation("net.kyori:adventure-text-minimessage:4.14.0")
 }
 
 kotlin {

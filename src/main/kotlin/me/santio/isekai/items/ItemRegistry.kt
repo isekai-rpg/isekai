@@ -11,16 +11,19 @@ class ItemRegistry {
     val items: List<Item>
         get() = _items
 
-    fun register(item: Item) {
+    fun register(item: Item): ItemRegistry {
         _items.add(item)
+        return this
     }
 
-    fun save() {
+    fun save(): ItemRegistry {
         _items.forEach(saveHandler::save)
+        return this
     }
 
-    fun load() {
+    fun load(): ItemRegistry {
         _items.addAll(saveHandler.load())
+        return this
     }
 
 }
