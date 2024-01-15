@@ -15,7 +15,7 @@ import kotlin.system.measureTimeMillis
 private val ENVIRONMENT = Environment.DEV
 
 val dotEnv = dotenv {
-    filename = if(ENVIRONMENT.isProd) ".env" else ".env.dev"
+    filename = if(ENVIRONMENT.isProd) ".env" else ".env.local"
 }
 
 
@@ -50,11 +50,7 @@ private fun bootstrap() {
 private fun initializeVelocity() {
     val secret = dotEnv.get("VELOCITY_SECRET")
     if(secret == null) {
-        if(ENVIRONMENT.isProd) {
-            throw IllegalStateException("velocity secret is not set.")
-        } else {
-            println("velocity secret is not set, skipping velocity initialization.")
-        }
+        println("velocity secret is not set, skipping velocity initialization.")
         return
     }
 
