@@ -4,7 +4,7 @@ import me.santio.isekai.entity.types.EliteZombieCreature
 import net.minestom.server.command.builder.Command
 import net.minestom.server.entity.Player
 
-object SpawnEntity : Command("s") {
+object SpawnEntity : Command("spawn") {
     init {
         setDefaultExecutor { sender, _ ->
             val player = sender as? Player

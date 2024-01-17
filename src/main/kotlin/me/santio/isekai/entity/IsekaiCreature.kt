@@ -9,7 +9,6 @@ abstract class IsekaiCreature(
 ) : EntityCreature(entityType), StatsHolder {
     init {
         build()
-        println("INT" + System.currentTimeMillis())
         println(stats)
     }
 

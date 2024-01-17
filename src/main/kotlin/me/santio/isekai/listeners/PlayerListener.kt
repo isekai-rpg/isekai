@@ -1,6 +1,5 @@
 package me.santio.isekai.listeners
 
-import com.github.shynixn.mccoroutine.minestom.asyncDispatcher
 import com.github.shynixn.mccoroutine.minestom.launch
 import me.santio.isekai.io.mojang.UnifiedMojangAPI
 import me.santio.isekai.worlds.FlatWorld
@@ -16,6 +15,7 @@ class PlayerListener(
     private val server: MinecraftServer
 ) {
     private val mojangAPI = UnifiedMojangAPI()
+
 
     suspend fun PlayerSkinInitEvent.on() {
         server.launch {
