@@ -4,6 +4,7 @@ import me.santio.isekai.commands.GamemodeCommand
 import me.santio.isekai.commands.ItemCommand
 import me.santio.isekai.helper.registerListener
 import me.santio.isekai.items.ItemRegistry
+import me.santio.isekai.items.handlers.SwordHandler
 import me.santio.isekai.listeners.DoorListener
 import me.santio.isekai.listeners.GlobalBlockHandler
 import me.santio.isekai.listeners.PlayerListener
@@ -18,10 +19,13 @@ fun main() {
     MinecraftServer.getCommandManager().register(GamemodeCommand)
     MinecraftServer.getCommandManager().register(ItemCommand(items))
 
+    MinecraftServer.LOGGER.info("Hey")
+
     val eventHandler = MinecraftServer.getGlobalEventHandler()
     eventHandler.registerListener(server, PlayerListener(server))
     eventHandler.registerListener(server, GlobalBlockHandler)
     eventHandler.registerListener(server, DoorListener)
+    eventHandler.registerListener(server, SwordHandler(items))
 
     server.start("0.0.0.0", 25565)
     println("Server started in ${System.currentTimeMillis() - started}ms")
