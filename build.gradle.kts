@@ -21,6 +21,9 @@ dependencies {
     implementation("com.squareup.okhttp3:okhttp:4.12.0")
     implementation("ru.gildor.coroutines:kotlin-coroutines-okhttp:1.0")
 
+    // dotenv
+    implementation("io.github.cdimascio:dotenv-kotlin:6.4.1")
+
     // kotlinx 
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.2")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.0-RC2")
