@@ -7,7 +7,7 @@ import me.santio.isekai.handler.block.DoorHandler
 import me.santio.isekai.helper.BlockRegistry
 import me.santio.isekai.helper.BlockRegistry.isKind
 import me.santio.isekai.helper.registerListener
-import me.santio.isekai.listeners.EntityListener
+import me.santio.isekai.listeners.EntityDamageListener
 import me.santio.isekai.listeners.GlobalBlockHandler
 import me.santio.isekai.listeners.PlayerListener
 import me.santio.isekai.worlds.IntroWorld
@@ -29,6 +29,7 @@ fun main() {
     }
     println("Server started in ${startupTime}ms.")
 
+
     registerShutdownLogic()
 }
 
@@ -37,8 +38,7 @@ fun main() {
  */
 private fun bootstrap() {
     val server = MinecraftServer.init()
-
-    initializeVelocity()
+    MinecraftServer.setTerminalEnabled(true)
 
     val commandManager = MinecraftServer.getCommandManager()
     commandManager.register(GamemodeCommand)
@@ -47,10 +47,12 @@ private fun bootstrap() {
     val eventHandler = MinecraftServer.getGlobalEventHandler()
     eventHandler.registerListener(server, PlayerListener(server))
     eventHandler.registerListener(server, GlobalBlockHandler)
-    eventHandler.registerListener(server, EntityListener)
+    eventHandler.registerListener(server, EntityDamageListener)
 
     GlobalBlockHandler.register(DoorHandler) { it.isKind(BlockRegistry.BlockKind.DOOR) }
     eventHandler.registerListener(server, GlobalBlockHandler)
+
+    initializeVelocity()
 
     server.start("0.0.0.0", 25565)
 }

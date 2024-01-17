@@ -6,22 +6,20 @@ package me.santio.isekai.entity
  *
  */
 open class EntityStats(
-    health: Double,
-    maxHealth: Double
+    health: Float,
+    maxHealth: Float
 ) {
     /**
      * Constructor for when the max health is the same as the health
      * @param maxHealth the max health of the entity
      */
-    constructor(maxHealth: Double) : this(maxHealth, maxHealth)
+    constructor(maxHealth: Float) : this(maxHealth, maxHealth)
 
-    var health = health
-        private set
+    private var health = health
 
-    var maxHealth = maxHealth
-        private set
+    private var maxHealth = maxHealth
 
-    fun addHealth(amount: Double) {
+    fun addHealth(amount: Float) {
         health += amount
 
         if(health > maxHealth) {
@@ -32,18 +30,22 @@ open class EntityStats(
     /**
      * @return true if the entity died
      */
-    fun removeHealth(amount: Double): Boolean {
+    fun removeHealth(amount: Float): Boolean {
         health -= amount
         return health <= 0
     }
 
-    fun health(): Double = health
+    fun setHealth(health: Float) {
+        this.health = health
+    }
 
-    fun addMaxHealth(amount: Double) {
+    fun health(): Float = health
+
+    fun addMaxHealth(amount: Float) {
         maxHealth += amount
     }
 
-    fun removeMaxHealth(amount: Double) {
+    fun removeMaxHealth(amount: Float) {
         maxHealth -= amount
 
         if(maxHealth < MINIMUM_HEALTH) {
@@ -51,9 +53,12 @@ open class EntityStats(
         }
     }
 
-    fun maxHealth(): Double = maxHealth
+    fun maxHealth(): Float = maxHealth
+    override fun toString(): String {
+        return "EntityStats(health=$health, maxHealth=$maxHealth)"
+    }
 
     companion object {
-        const val MINIMUM_HEALTH = 1.0
+        const val MINIMUM_HEALTH = 1.0F
     }
 }

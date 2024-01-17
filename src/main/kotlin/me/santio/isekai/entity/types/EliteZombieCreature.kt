@@ -15,14 +15,14 @@ import net.minestom.server.utils.time.TimeUnit
 
 class EliteZombieCreature : IsekaiCreature(
     EntityType.ZOMBIE,
-    EntityStats(100.0)
+    EntityStats(100.0F)
 ), AIGroupHolder {
     override fun aiGroup(): EntityAIGroup = EntityAIGroupBuilder()
-//        .addTargetSelector(LastEntityDamagerTarget(this, 32F))
+        .addTargetSelector(LastEntityDamagerTarget(this, 32F))
         .addTargetSelector(ClosestEntityTarget(this, 32.0) { ctx ->
             ctx is Player && ctx.gameMode.canTakeDamage()
         })
         .addGoalSelector(MeleeAttackGoal(this, 1.6, 20, TimeUnit.SERVER_TICK))
-//        .addGoalSelector(RandomStrollGoal(this, 3))
+        .addGoalSelector(RandomStrollGoal(this, 3))
         .build()
 }

@@ -5,10 +5,12 @@ import net.minestom.server.entity.EntityType
 
 abstract class IsekaiCreature(
     entityType: EntityType,
-    override val stats: EntityStats
+    final override val stats: EntityStats
 ) : EntityCreature(entityType), StatsHolder {
     init {
         build()
+        println("INT" + System.currentTimeMillis())
+        println(stats)
     }
 
     /**
@@ -18,5 +20,29 @@ abstract class IsekaiCreature(
         if(this is AIGroupHolder) {
             addAIGroup(aiGroup())
         }
+    }
+
+    override fun getHealth(): Float = stats.health()
+
+    override fun setHealth(health: Float) {
+        stats.setHealth(health)
+
+        if(stats.health() <= 0 && !isDead())  {
+            kill()
+        }
+    }
+
+    override fun getMaxHealth(): Float = stats.maxHealth()
+
+
+    @Suppress("SENSELESS_COMPARISON") // NUH UH!
+    override fun heal() {
+        // edge case where super constructor of
+        // [LivingEntity] calls [heal] before [stats] is initialized - tech
+        if(stats == null) {
+            return
+        }
+
+        stats.setHealth(stats.maxHealth())
     }
 }
