@@ -16,6 +16,7 @@ repositories {
 
 dependencies {
     implementation("dev.hollowcube:minestom-ce:78cb62fa72")
+    implementation("org.slf4j:slf4j-jdk14:2.0.11")
 
     // http client
     implementation("com.squareup.okhttp3:okhttp:4.12.0")
