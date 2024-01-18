@@ -2,6 +2,7 @@ package me.santio.isekai.listeners
 
 import com.github.shynixn.mccoroutine.minestom.asyncDispatcher
 import com.github.shynixn.mccoroutine.minestom.launch
+import kotlinx.coroutines.async
 import me.santio.isekai.io.mojang.UnifiedMojangAPI
 import me.santio.isekai.worlds.FlatWorld
 import net.kyori.adventure.text.Component
@@ -20,11 +21,14 @@ class PlayerListener(
 
     suspend fun PlayerSkinInitEvent.on() {
         server.launch {
-            val skin = mojangAPI.get(player.username)
-                .fold(
-                    onSuccess = { it.textures.skin },
-                    onFailure = { null }
-                )
+            val skin = async(server.asyncDispatcher) {
+                mojangAPI.get(player.username)
+                    .fold(
+                        onSuccess = { it.textures.skin },
+                        onFailure = { null }
+                    )
+            }.await()
+
             if(skin == null) {
                 player.sendMessage(Component.text("Unable to load skin.", NamedTextColor.RED))
                 return@launch
