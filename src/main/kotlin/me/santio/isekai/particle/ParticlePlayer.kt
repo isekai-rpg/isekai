@@ -16,16 +16,11 @@ import net.minestom.server.timer.TaskSchedule
 class ParticlePlayer(
     var location: Pos,
     private val emitter: ParticleEmitter,
-    private val ups: Int = 50,
+    private val ups: Int = 20,
+    private val count: Int = 1
 ) {
 
     private var task: Task? = null
-    var count: Int = 1
-
-    fun play(data: ParticleData? = null, count: Int = 1): ParticlePlayer {
-        emitter.emit(location, data, count)
-        return this
-    }
 
     fun start(data: ParticleData? = null): ParticlePlayer {
         task?.cancel()

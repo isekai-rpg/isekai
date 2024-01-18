@@ -11,7 +11,6 @@ import me.santio.isekai.items.handlers.SwordHandler
 import me.santio.isekai.listeners.DoorListener
 import me.santio.isekai.listeners.GlobalBlockHandler
 import me.santio.isekai.listeners.PlayerListener
-import me.santio.isekai.particle.ParticleRegistry
 import me.santio.isekai.worlds.IntroWorld
 import net.minestom.server.MinecraftServer
 import net.minestom.server.extras.velocity.VelocityProxy
@@ -42,14 +41,13 @@ fun main() {
 private fun bootstrap() {
     val server = MinecraftServer.init()
     val items = ItemRegistry().load()
-    val emitters = ParticleRegistry()
 
     initializeVelocity()
 
     val commandManager = MinecraftServer.getCommandManager()
     commandManager.register(GamemodeCommand)
     commandManager.register(ItemCommand(items))
-    commandManager.register(ParticleCommand(emitters))
+    commandManager.register(ParticleCommand)
 
     val eventHandler = MinecraftServer.getGlobalEventHandler()
     eventHandler.registerListener(server, PlayerListener(server))
