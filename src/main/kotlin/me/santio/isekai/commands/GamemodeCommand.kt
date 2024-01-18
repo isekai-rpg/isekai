@@ -1,6 +1,6 @@
 package me.santio.isekai.commands
 
-import me.santio.isekai.helper.addSyntax
+import me.santio.isekai.helper.minestom.addSyntax
 import net.minestom.server.command.builder.Command
 import net.minestom.server.command.builder.arguments.ArgumentType
 import net.minestom.server.entity.GameMode

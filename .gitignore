@@ -41,5 +41,5 @@ bin/
 ### Custom ###
 server/
 
-.env*
+server/.env.local
 !.env.example

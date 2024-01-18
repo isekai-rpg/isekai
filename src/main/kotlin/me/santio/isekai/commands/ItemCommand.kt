@@ -1,6 +1,6 @@
 package me.santio.isekai.commands
 
-import me.santio.isekai.helper.addSyntax
+import me.santio.isekai.helper.minestom.addSyntax
 import me.santio.isekai.helper.sendFormatted
 import me.santio.isekai.items.ItemRegistry
 import net.kyori.adventure.text.Component

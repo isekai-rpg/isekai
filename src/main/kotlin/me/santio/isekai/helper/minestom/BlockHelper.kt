@@ -6,11 +6,19 @@ import net.minestom.server.instance.block.BlockFace
 import net.minestom.server.instance.block.BlockHandler
 import kotlin.math.abs
 
-fun pos(x: Number, y: Number, z: Number): Pos {
+fun pos(x: Number, y: Number, z: Number, yaw: Number? = 0, pitch: Number? = 0): Pos {
     return Pos(
-        if (x is Int) x.toDouble() + 0.5 else x.toDouble(),
+        vec(x, y, z),
+        yaw?.toFloat() ?: 0.0f,
+        pitch?.toFloat() ?: 0.0f
+    )
+}
+
+fun vec(x: Number, y: Number, z: Number): Vec {
+    return Vec(
+        if (x is Int) x.toDouble() else x.toDouble(),
         y.toDouble(),
-        if (z is Int) z.toDouble() + 0.5 else z.toDouble()
+        if (z is Int) z.toDouble() else z.toDouble()
     )
 }
 

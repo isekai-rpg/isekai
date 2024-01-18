@@ -1,9 +1,9 @@
 package me.santio.isekai.worlds
 
-import me.santio.isekai.helper.fillHeight
-import me.santio.isekai.helper.id
+import me.santio.isekai.helper.minestom.fillHeight
+import me.santio.isekai.helper.minestom.id
 import me.santio.isekai.helper.minestom.pos
-import me.santio.isekai.helper.register
+import me.santio.isekai.helper.minestom.register
 import net.minestom.server.coordinate.Pos
 import net.minestom.server.entity.Player
 import net.minestom.server.instance.Instance
