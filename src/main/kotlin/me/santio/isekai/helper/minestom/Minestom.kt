@@ -1,4 +1,4 @@
-package me.santio.isekai.helper
+package me.santio.isekai.helper.minestom
 
 import net.minestom.server.MinecraftServer
 import net.minestom.server.command.builder.Command
