@@ -1,20 +1,14 @@
 package me.santio.isekai.listeners
 
 import me.santio.isekai.entity.IsekaiCreature
-import me.santio.isekai.entity.damage.EntityDamageHandler
-import net.minestom.server.attribute.Attribute
-import net.minestom.server.attribute.AttributeModifier
 import net.minestom.server.entity.Player
 import net.minestom.server.entity.damage.DamageType
 import net.minestom.server.event.entity.EntityAttackEvent
-import net.minestom.server.event.entity.EntityDamageEvent
 import kotlin.math.PI
 import kotlin.math.cos
 import kotlin.math.sin
 
 object EntityDamageListener {
-    private val damageHandler = EntityDamageHandler()
-
     fun EntityAttackEvent.on() {
         // player attack isekai (REAL) - tech
         val attacker = entity as? Player
