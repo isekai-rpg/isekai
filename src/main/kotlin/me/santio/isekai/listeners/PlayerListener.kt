@@ -1,6 +1,5 @@
 package me.santio.isekai.listeners
 
-import com.github.shynixn.mccoroutine.minestom.asyncDispatcher
 import com.github.shynixn.mccoroutine.minestom.launch
 import kotlinx.coroutines.async
 import me.santio.isekai.io.mojang.UnifiedMojangAPI
@@ -16,8 +15,8 @@ import net.minestom.server.event.player.PlayerSkinInitEvent
 class PlayerListener(
     private val server: MinecraftServer
 ) {
-
     private val mojangAPI = UnifiedMojangAPI()
+
 
     suspend fun PlayerSkinInitEvent.on() {
         server.launch {
